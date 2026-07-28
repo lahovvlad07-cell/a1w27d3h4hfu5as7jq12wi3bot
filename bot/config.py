@@ -26,4 +26,4 @@ except ImportError:
 DEFAULT_TOKEN = "8708842706:AAHi5Rdb8kPxKGXMu1Knavf1ilowUxtfsrM"
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", DEFAULT_TOKEN)
-SHOP_URL = os.getenv("SHOP_URL", "https://neonkey.vercel.app/")
+SHOP_URL = os.getenv("SHOP_URL", "a1w27d3h4hfu5as7jq12wi3.vercel.app")
