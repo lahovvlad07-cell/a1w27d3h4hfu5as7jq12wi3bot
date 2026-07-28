@@ -11,20 +11,16 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 
-async def main_async():
-    """Асинхронный вход в приложение."""
+def main():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
 
+    # Явно создаём и устанавливаем цикл событий (необходимо для Python 3.14+)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
     print("✅ Бот NeonKey запущен!")
-
-    # Инициализация и запуск бота
-    await app.initialize()
-    await app.start()
-    await app.updater.start_polling()
-
-    # Ожидание завершения (например, по Ctrl+C)
-    await app.updater.wait_until_shutdown()
+    app.run_polling()
 
 if __name__ == "__main__":
-    asyncio.run(main_async())
+    main()
